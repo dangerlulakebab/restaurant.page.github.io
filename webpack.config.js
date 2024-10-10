@@ -11,23 +11,18 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/template.html',
         }),
     ],
     module: {
         rules: [
             {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                test: /\.(png|jpg|gif|svg)$/i,
+                type: 'asset/resource', // Handle images using asset/resource
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                use: {
-                    loader: 'file-loader',
-                    options: {
-                        name: '[path][name].[ext]',
-                    },
-                },
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
             },
         ],
     },
